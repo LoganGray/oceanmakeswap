@@ -3,7 +3,7 @@
 red='\033[0;31m'
 yellow='\033[1;33m'  
 NC='\033[0m' # No Color
-echo "\nThis script creates a 1G Swap file.  \nIf you see something like Swap:  0  0  0 in yellow below -  \nthen you do NOT currently have a swap file."
+printf "\nThis script creates a 1G Swap file.  \nIf you see something like Swap:  0  0  0 in yellow below -  \nthen you do NOT currently have a swap file."
 echo -e "${yellow}-----------Swap info---------------"
 free -m
 echo "-----------------------------------"
@@ -35,8 +35,9 @@ then
 	free -m
 	echo "-----------------------------------"
 	echo -e "${red}"
-	read -p "About to Reboot to implement this immediately - Are you sure? \n(If you press N, the swap file creation will have happened, but will not be used until you reboot)" -n 1 -r
-	echo    # (optional) move to a new line
+	printf "IMPORTANT! About to Reboot to implement this immediately - Are you sure?\n"
+	read -p "(If you press N, the swap file creation will have happened, but will not be used until you reboot)" -n 1 -r
+	printf "\n"
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 	   reboot
